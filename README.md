@@ -1,3 +1,15 @@
+## QuantumChemCrow
+
+# Agentic AI framework for quantum chemistry built by extending the ChemCrow architecture.
+
+This project integrates Large Language Models with quantum chemistry tools to enable intelligent reasoning and automated scientific workflows.
+
+## Overview
+
+QuantumChemCrow combines AI reasoning with computational chemistry tools. The system allows an AI agent to analyze chemical questions and automatically call scientific tools such as quantum calculations and molecular visualization.
+
+This project extends the ChemCrow framework by adding quantum chemistry capabilities relevant to computational chemistry research.
+
 ## Environment Setup
 
 * Migrated development environment to **Ubuntu WSL** for better compatibility with scientific computing libraries.
