@@ -159,8 +159,7 @@ chemcrow/
 
 **Tejas Lokhande**
 
-Master's Student – Computational Chemistry
-Computational Chemistry and Machine Learning Lab
+Master's Student – IIT Hyderabad
 
 ---
 
