@@ -1,101 +1,122 @@
-[![tests](https://github.com/ur-whitelab/chemcrow-public/actions/workflows/tests.yml/badge.svg)](https://github.com/ur-whitelab/chemcrow-public)
-[![PyPI](https://img.shields.io/pypi/v/chemcrow)](https://img.shields.io/pypi/v/chemcrow)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/chemcrow)](https://img.shields.io/pypi/pyversions/chemcrow)
-[![DOI:10.1101/2020.07.15.204701](https://zenodo.org/badge/DOI/10.48550/arXiv.2304.05376.svg)](https://doi.org/10.48550/arXiv.2304.05376)
-[![DOI](https://zenodo.org/badge/649361700.svg)](https://zenodo.org/doi/10.5281/zenodo.10884638)
+### Environment Setup
 
+* Migrated development environment to **Ubuntu WSL** for better compatibility with scientific computing libraries.
+* Created a clean Python virtual environment (`chemcrow_env`).
+* Installed and configured key computational chemistry and visualization libraries:
 
+  * PySCF for quantum chemistry calculations
+  * RDKit for molecular structure handling
+  * py3Dmol for 3D molecular visualization
+  * LangChain and OpenAI API for AI agent integration.
 
+Features
+Quantum Harmonic Oscillator Solver
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/chemcrow_dark_bold.png" width='100%'>
-  <source media="(prefers-color-scheme: light)" srcset="assets/chemcrow_light_bold.png" width='100%'>
-  <img alt="ChemCrow logo" src="/assets/" width="100%">
-</picture>
+Computes energy levels using the analytical quantum mechanics solution:
 
+Eₙ = ħω(n + 1/2)
 
-<br></br>
+Hartree–Fock Quantum Calculations
 
+Performs ab initio electronic structure calculations using PySCF.
 
-ChemCrow is an open source package for the accurate solution of reasoning-intensive chemical tasks.
+Example:
 
-Built with Langchain, it uses a collection of chemical tools including RDKit, paper-qa, as well as some relevant databases in chemistry, like Pubchem and chem-space.
+Water molecule
 
-## 🤗 Try it out in [HuggingFace](https://huggingface.co/spaces/doncamilom/ChemCrow)!
+Benzene
 
-[![ChemCrow Demo](assets/hf-demo.png)](https://huggingface.co/spaces/doncamilom/ChemCrow)
+Ethanol
 
+Molecular Visualization
 
-## ⚠️ Note
+Converts SMILES strings into 3D molecular structures and visualizes them interactively.
 
-This package does not contain all the tools described in the [ChemCrow paper](https://arxiv.org/abs/2304.05376) because
-of API usage restrictions. This repo will not give the same results as that paper.
+Agentic AI Workflow
 
-All the experiments have been released under [ChemCrow runs](https://github.com/ur-whitelab/chemcrow-runs).
+The AI agent can:
 
+Interpret chemistry questions
 
-## 👩‍💻 Installation
+Choose appropriate scientific tools
 
-```
-pip install chemcrow
-```
+Execute calculations
 
-## 🔥 Usage
-First set up your API keys in your environment.
-```
-export OPENAI_API_KEY=your-openai-api-key
-```
+Return scientific results
 
-You can optionally use Serp API:
+Technologies Used
 
-```
-export SERP_API_KEY=your-serpapi-api-key
-```
+Python
 
-In a Python session:
-```python
-from chemcrow.agents import ChemCrow
+PySCF
 
-chem_model = ChemCrow(model="gpt-4-0613", temp=0.1, streaming=False)
-chem_model.run("What is the molecular weight of tylenol?")
-```
+RDKit
 
+py3Dmol
 
-## 🛠️ Self-hosting of some tools.
+LangChain
 
-By default, ChemCrow relies on the RXN4Chem API for retrosynthetic planning and reaction product prediction. This can however be slow and depends on you having an API key.
+OpenAI API
 
-Optionally, you can also self host these tools by running some pre-made docker images.
+Installation
 
-Run 
+Clone the repository:
 
-```
-docker run --gpus all -d -p 8051:5000 doncamilom/rxnpred:latest
-docker run --gpus all -d -p 8052:5000 doncamilom/retrosynthesis:latest
-```
+git clone https://github.com/yourusername/QuantumChemCrow.git
+cd QuantumChemCrow
 
+Create environment:
 
-Now ChemCrow can be used like this:
+python -m venv chemcrow_env
+source chemcrow_env/bin/activate
 
-```python
-from chemcrow.agents import ChemCrow
+Install dependencies:
 
-chem_model = ChemCrow(model="gpt-4-0613", temp=0.1, streaming=False, local_rxn=True)
-chem_model.run("What is the product of the reaction between styrene and dibromine?")
-```
+pip install -r dev-requirements.txt
+pip install pyscf rdkit py3Dmol
 
+Set OpenAI API key:
 
-## ✅ Citation
-Bran, Andres M., et al. "ChemCrow: Augmenting large-language models with chemistry tools." arXiv preprint arXiv:2304.05376 (2023).
+export OPENAI_API_KEY="your_key"
+Example Usage
 
-```bibtex
-@article{bran2023chemcrow,
-      title={ChemCrow: Augmenting large-language models with chemistry tools},
-      author={Andres M Bran and Sam Cox and Oliver Schilter and Carlo Baldassari and Andrew D White and Philippe Schwaller},
-      year={2023},
-      eprint={2304.05376},
-      archivePrefix={arXiv},
-      primaryClass={physics.chem-ph},
-      publisher={arXiv}
-}
-```
+Quantum Harmonic Oscillator:
+
+from chemcrow.tools.quantum.qho_solver import quantum_harmonic_oscillator
+
+quantum_harmonic_oscillator(5, 1e14)
+
+Hartree–Fock Energy:
+
+from chemcrow.tools.quantum.hf_energy import hartree_fock_energy
+
+hartree_fock_energy("O")
+
+Molecular Visualization:
+
+from chemcrow.tools.quantum.molecule_visualizer import visualize_molecule
+
+visualize_molecule("c1ccccc1")
+Example Output
+
+Hartree–Fock energy for water:
+
+SCF Energy = -74.96 Hartree
+Project Structure
+chemcrow/
+    agents/
+    tools/
+        quantum/
+            hf_energy.py
+            molecule_visualizer.py
+            qho_solver.py
+Author
+
+Tejas Lokhande
+
+Master's Student in Computational Chemistry
+Computational Chemistry and Machine Learning Lab
+
+License
+
+MIT License
