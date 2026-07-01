@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+chemcrow_env/
+.ipynb_checkpoints/
+*.egg-info/
+.DS_Store
