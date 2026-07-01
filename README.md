@@ -143,13 +143,23 @@ visualize_molecule("c1ccccc1")
 
 ---
 
-## Example Output
+## Screenshots
 
-Hartree–Fock energy for water:
+Interactive 3D molecular visualizations rendered via py3Dmol:
 
-```
-SCF Energy = -74.96 Hartree
-```
+### Benzene
+![Benzene](assets/benzene.png)
+
+### Ethanol
+![Ethanol](assets/ethanol.png)
+
+### Glucose
+![Glucose](assets/glucose.png)
+
+### Aspirin
+![Aspirin](assets/aspirin.png)
+
+> **Note:** These visualizations are fully interactive (rotate, zoom, pan) when run locally in Jupyter or VS Code. GitHub's notebook preview sandboxes JavaScript, so `py3Dmol`'s interactive viewer won't render inside `try_and_test.ipynb` on GitHub — clone the repo and run the notebook locally to see them in action.
 
 ---
 
